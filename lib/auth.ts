@@ -4,6 +4,14 @@ import bcrypt from 'bcryptjs';
 import connectDB from './mongodb';
 import User from '@/models/User';
 
+if (!process.env.NEXTAUTH_SECRET) {
+  throw new Error('NEXTAUTH_SECRET is not set in environment variables');
+}
+
+if (!process.env.NEXTAUTH_URL) {
+  throw new Error('NEXTAUTH_URL is not set in environment variables');
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
