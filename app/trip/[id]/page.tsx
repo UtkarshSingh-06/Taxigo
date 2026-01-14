@@ -7,6 +7,8 @@ import TripTracking from '@/components/TripTracking';
 import PaymentForm from '@/components/PaymentForm';
 import RatingForm from '@/components/RatingForm';
 import MapView from '@/components/MapView';
+import RouteOptimizationView from '@/components/RouteOptimizationView';
+import SafetyAnalyticsDashboard from '@/components/SafetyAnalyticsDashboard';
 
 interface Trip {
   _id: string;
@@ -147,21 +149,30 @@ export default function TripDetailPage() {
             )}
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Trip Tracking</h2>
-            {trip.status === 'in-progress' || trip.status === 'confirmed' ? (
-              <TripTracking
-                tripId={trip._id}
-                origin={trip.origin}
-                destination={trip.destination}
-                driverLocation={trip.driverId?.currentLocation}
-              />
-            ) : (
-              <MapView
-                origin={trip.origin}
-                destination={trip.destination}
-                height="500px"
-              />
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <h2 className="text-xl font-bold text-gray-900 mb-4">Trip Tracking</h2>
+              {trip.status === 'in-progress' || trip.status === 'confirmed' ? (
+                <TripTracking
+                  tripId={trip._id}
+                  origin={trip.origin}
+                  destination={trip.destination}
+                  driverLocation={trip.driverId?.currentLocation}
+                />
+              ) : (
+                <MapView
+                  origin={trip.origin}
+                  destination={trip.destination}
+                  height="500px"
+                />
+              )}
+            </div>
+
+            {(trip.status === 'confirmed' || trip.status === 'in-progress') && (
+              <>
+                <RouteOptimizationView tripId={trip._id} />
+                <SafetyAnalyticsDashboard tripId={trip._id} />
+              </>
             )}
           </div>
         </div>
