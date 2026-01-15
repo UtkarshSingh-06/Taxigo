@@ -38,8 +38,8 @@ npm install
 Create a `.env.local` file in the root directory with:
 ```env
 MONGODB_URI=your_mongodb_connection_string
-# For local MongoDB: mongodb://localhost:27017/taxigo
-# For MongoDB Atlas: mongodb+srv://username:password@cluster.mongodb.net/database
+# Example for local: mongodb://localhost:27017/taxigo
+# For cloud databases, use your provider's connection string format
 
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your_random_secret_key_here_min_32_characters
