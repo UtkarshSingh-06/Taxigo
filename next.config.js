@@ -4,6 +4,17 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  webpack: (config, { isServer }) => {
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ['**/node_modules', '**/.git'],
+    }
+    config.optimization = {
+      ...config.optimization,
+      moduleIds: 'deterministic',
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig
