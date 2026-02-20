@@ -18,6 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="/theme.css" />
+      </head>
       <body className={inter.className}>
         <Providers>
           <Navbar />
