@@ -1,0 +1,5 @@
+/* Critical fallback - loads when chunk fails */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#050510!important;color:#fff!important;min-height:100vh;font-family:system-ui,-apple-system,sans-serif}
+a{color:#38bdf8;text-decoration:none}
+a:hover{text-decoration:underline}
